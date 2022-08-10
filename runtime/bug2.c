@@ -30,9 +30,8 @@ int main(int argc, char ** argv){
   rewind(fp);
 
   buffer = (char *)malloc(sizeof(char) * len);
-  
+  memset(buffer, 0, sizeof(char) * len);
   fread(buffer, sizeof(buffer), len, fp);
-  
 
 }
 
@@ -53,4 +52,5 @@ void print_hex_dump(char * str, int len){
     if((i + 1) % 10 == 0) printf("%02x|\n",str[i]);
     else printf("%02x ", str[i]);
   }
+  printf("\n");
 }
