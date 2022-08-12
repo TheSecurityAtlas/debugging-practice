@@ -1,6 +1,6 @@
 # debugging-practice
 Debugging Challenges
-
+ 
 ## Info
 Most of these challenges are written in C/C++ 
 and have been tested with GCC/G++/Clang.
