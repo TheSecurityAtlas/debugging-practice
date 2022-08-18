@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>bug1.c</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/debugging-practice/w3.css">
+    <link rel="stylesheet" href="/debugging-practice/style.css"> 
+    <script src="/debugging-practice/js.js"></script>
   </head>
   <body>
+    <button class="w3-black w3-button" style="float:left"><a href="/debugging-practice/index.html">Home</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="https://thesecurityatlas.com">The Security Atlas</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="/debugging-practice/en/challenges/runtime/clang/clang.html">C/C++ Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Security Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Programming Resources</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Contact</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Credits</a></button>
     
+    <br><br>
+    <h1 class="info-section" >bug1</h1>
+    <hr>
+    <div id="info-1" class="info-section">
+      <ul class="w3-ul">
+        <li>Creator: Conner Macolley</li>
+        <li>Date: 8/18/22 (18/8/22)</li>
+        <li>Number of Bugs: 1</li>
+        <li><code class="w3-codespan" style="color: black">gcc -w bug1.c -o bug1</code></li>
+        <li><button class="w3-button" onclick="change_to_visible('solution')">Solution</button></li>
+      </ul>
+    </div>
 
-
-    <p1><a href="/debugging-practice/docs/globrsrc/clang/bug1.c">Source code download</a></p1>
-    <br>
-    <p1>No. Bugs: 1</p1>
-    <br>
-    <button onclick="document.getElementById('solution').style.visibility = 'visible'">Solution</button>
-    <br>
-    <div id="solution" style="visibility: hidden;">
+    <div id="solution" class="info-section" style="visibility: hidden;">
       <p1>Solution:</p1>
       <p1>The problem is that the buffer variable does not have enough space allocated to handle what's being printed into it. This is known as a buffer overflow. If you were writing an enterprise application, hackers could easily inject code into your application and potentially take over the entire system. The solution is to increase the buffer size to anything above 41, the length of the raw message, plus 16, the maximum length of the name buffer. You also might as well add another +1 for the NULL byte.</p1>
       <br>
