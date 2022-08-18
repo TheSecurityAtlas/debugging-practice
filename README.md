@@ -30,8 +30,3 @@ int main(){
 }
 ...
 ```
-
-<h1>
-VERY IMPORTANT
-</h1>
-Do not look at the readme files until you have completed the challenge.
