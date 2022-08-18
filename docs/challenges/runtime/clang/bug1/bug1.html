@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>bug1.c</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
   </head>
   <body>
 
@@ -13,7 +14,12 @@
     <br>
     <div id="solution" style="visibility: hidden;">
       <p1>Solution:</p1>
-
+      <p1>The problem is that the buffer variable does not have enough space allocated to handle what's being printed into it. This is known as a buffer overflow. If you were writing an enterprise application, hackers could easily inject code into your application and potentially take over the entire system. The solution is to increase the buffer size to anything above 41, the length of the raw message, plus 16, the maximum length of the name buffer. You also might as well add another +1 for the NULL byte.</p1>
+      <br>
+      <p1>A way we could prevent future overflows is using the "fgets" function:</p1>
+      <br>
+      <p1>// here we get rid of scanf</p1><br>
+      <p1>  fgets(buffer, 64, stdin);</p1>
     </div>
   </body>
 </html>
