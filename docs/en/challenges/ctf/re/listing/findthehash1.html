@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Find the Hash 1</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/debugging-practice/w3.css">
+    <link rel="stylesheet" href="/debugging-practice/style.css"> 
+    <script src="/debugging-practice/js.js"></script>
+
+  </head>
+  <body>
+    <button class="w3-black w3-button" style="float:left"><a href="/debugging-practice/index.html">Home</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="https://thesecurityatlas.com">The Security Atlas</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="/debugging-practice/en/challenges/runtime/clang/clang.html">C/C++ Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="/debugging-practice/challenges/ctf/ctf.html">Security Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Programming Resources</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Contact</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Credits</a></button>
+    <br>
+    <br>
+    <h1 class="info-section">Find the Hash 1</h1>
+    <hr>
+    <div id="info-1" class="info-section">
+      <ul class="w3-ul">
+        <li>Creator: Conner Macolley</li>
+        <li>Creation Date: 8/19/22 (19/8/22)</li>
+        <li>Difficulty: 3/10</li>
+        <li>Language: C</li>
+        <li>Platform: Linux</li>
+        <li class="terminal-command">Compiled with: <code class=" w3-codespan">gcc findthehash1.c -o findthehash1</code></li>
+        <li>Download: <a href="/debugging-practice/globrsrc/ctf/exploit/findthehash1">findthehash1</a></li>
+        <li>
+          <details>
+            <summary>Resources</summary>
+            <ul class="w3-ul">
+              <li><a href="https://riptutorial.com/gdb">https://riptutorial.com/gdb</a></li>
+              <li><a href="https://refspecs.linuxfoundation.org/elf/gabi4+/ch4.eheader.html">https://refspecs.linuxfoundation.org/elf/gabi4+/ch4.eheader.html</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><button class="w3-button" onclick="change_to_visible('solution')">Solution</button></li>
+      </ul>
+    </div>
+    <!-- solution -->
+    <div id="solution" class="info-section" style="visibility: hidden">
+      <h3>Solution:</h3>
+      <p1>There are two ways of solving this.</p1>
+      
+    
+      <details>
+        <summary>Solution 1</summary>
+
+        <p1>The easiest method of going about this is using the Linux <i>strings</i> command. When we do so, we see out put like this:</p1>
+        <pre>
+strcmp
+__libc_start_main
+GLIBC_2.4
+GLIBC_2.2.5
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+u+UH
+AWAVAUATSH
+dH34%(
+[A\A]A^A_]
+[]A\A]A^A_
+5a3135eef0aad7d3ce18a52547ce295f
+Enter the password: 
+Congrats: You found the flag
+Keep looking...
+:*3$"
+GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+        </pre>
+        <p1>We an clearly see what looks like an MD5 hash right there: <i>5a3135eef0aad7d3ce18a52547ce295f</i></p1>
+      </details>
+      <br><br>
+
+      <details>
+        <summary>Solution 2</summary>
+        <p1>The other, more difficult method would be using a debugger. In this demonstration we are going to use GDB with the pwndbg extension.</p1>
+        <p1>When we start up the debugger we are going to set a breakpoint at "strcmp". If you saw the previous solution, you saw strcmp in the strings listing. This is a symbol. GDB will halt execution once it hits the strcmp function.</p1>
+        <br><br>
+        <image src="/debugging-practice/globrsrc/images/findthehash1.image1.png"?></image>
+        <br>
+        <p1>Now we will run the program using the "run" command. It will stop once it hits "strcmp" and show us registers and memory.</p1>
+        <br><br>
+        <image src="/debugging-practice/globrsrc/images/findthehash1.image2.png" style="height: 400px; width: 600px"></image>
+        <br>
+        <p1>At this point, GDB has figured out where everything is in memory. We can now go to the disassembly of the main function using "disass main". The first image is of the disassembly before the program was run, and the second is of the disassembly after the breakpoint we set on strcmp was hit.</p1>
+        <br>
+        <image style="height: 300px; width: 400px" src="/debugging-practice/globrsrc/images/findthehash1.image4.png"></image>
+        <image style="height: 300px; width: 450px" src="/debugging-practice/globrsrc/images/findthehash1.image3.png"></image>
+        <br>
+        <p1>Notice something? Well it looks like we see something stored in the .rodata part of the binary: "0x555555556008". Lets try and print out whats currently in that section of memory using the "x/s" command in GDB.</p1>
+        <br>
+        <image src="/debugging-practice/globrsrc/images/findthehash1.image5.png"></image>
+        <br>
+        <p1>As you can see, the password is stored in the .rodata part of the binary.</p1>
+      </details>
+    </div>
+    <br><br>
+  </body>
+</html>

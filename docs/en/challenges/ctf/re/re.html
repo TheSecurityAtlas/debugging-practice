@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reverse Engineering and Malware Analysis</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/debugging-practice/w3.css">
+    <link rel="stylesheet" href="/debugging-practice/style.css"> 
+  </head>
+  <body>
+    <button class="w3-black w3-button" style="float:left"><a href="/debugging-practice/index.html">Home</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="https://thesecurityatlas.com">The Security Atlas</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="/debugging-practice/en/challenges/runtime/clang/clang.html">C/C++ Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a href="/debugging-practice/challenges/ctf/ctf.html">Security Challenges</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Programming Resources</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Contact</a></button>
+    <button class="w3-button w3-black" style="float:left"><a>Credits</a></button>
+    <br><br>
+    <h1 class="info-section">Reverse Engineering and Malware Analysis</h1>
+    <hr>
+
+    <div id="info-1" class="info-section">
+      <p1>These challenges will have you picking through binary executables for both Windows and Linux to try and determine what the file is doing and thus obtain the flag. Note that <b>WE DO NOT HAVE REAL MALWARE SAMPLES</b>. We are using hand written pieces of "malware" that won't actually harm your system. However, it is still recommended that you have a malware analysis VM as it is good practice.</p1>
+      <br><br>
+      <h2>Recommended Prerequisites</h2>
+      <ul>
+        <li>A solid understanding of binary formats</li>
+        <li>A decent understanding of assembly language</li>
+        <li>Knowledge of debuggers, disassemblers, and techniques for both</li>
+        <li>Knowledge of the computer program execution cycle</li>
+      </ul>
+      <h2>Recommended Tools</h2>
+      <ul class="w3-ul">
+        <li>Disassemblers</li>
+        <ul>
+          <li><a href="https://github.com/NationalSecurityAgency/ghidra" target="_blank">Ghidra</a></li>
+          <li><a href="https://github.com/rizinorg/cutter" target="_blank">Cutter</a></li>
+          <li><a href="https://www.gnu.org/software/binutils/binutils.html" target="_blank">GNU Binary Utils - Objdump</a></li>
+          <li><a href="https://hex-rays.com/IDA-pro/" target="_blank">IDA Pro</a></li>
+          <li><a href="https://github.com/REDasmOrg/REDasm/" target="_blank">ReDASM</a></li>
+          <li><a href="https://ollydbg.de" target="_blank">OllyDBG(Windows only)</a></li>
+        </ul>
+        <li>Debuggers</li>
+        <ul>
+          <li><a href="https://www.gnu.org/software/binutils/binutils.html" target="_blank">GNU GDB</a></li>
+          <li><a href="https://github.com/pwndbg/pwndbg" target="_blank">GNU GDB with the pwndbg extension</a></li>
+          <li><a href="https://github.com/radareorg/radare2" target="_blank">Radare2</a></li>
+          <li><a href="https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/" target="_blank">WinDBG(Windows only)</a></li>
+          <li><a href="https://ollydbg.de" target="_blank">OllyDBG(Windwos only)</a></li>
+        </ul>
+      </ul>
+
+      <details>
+        <summary>List Challenges</summary>
+        <ul class="w3-ul">
+          <li><a href="./listing/findthehash1.html">Find the Hash.c</a></li>
+        </ul>
+      </details>
+    </div>
+  </body>
+</html>
